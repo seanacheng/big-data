@@ -2,15 +2,24 @@
 import sys, re
 
 def main(argv):
+    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
+
     line = sys.stdin.readline()
-    pattern = re.compile("[a-zA-Z][a-zA-Z0-9]*")
+    pattern = re.compile(log_pattern)
+
     try:
         while line:
-            for word in line.split():
-                print ("LongValueSum:" + word + "\t" + "1")
+            for match in pattern.findall(line):
+                matches_list = list(match)[1:]
+                ip_addr = matches_list[0]
+                rq_type = matches_list[1]
+                er_code = matches_list[2]
+                print ('LongValueSum:'+rq_type+'\t'+'1')
+
             line = sys.stdin.readline()
     except EOFError as error:
         return None
+
 
 if __name__ == "__main__":
     main(sys.argv)
