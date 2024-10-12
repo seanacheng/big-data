@@ -7,7 +7,7 @@ def main(argv):
     try:
         while line:
             for word in line.split():
-                print ("LongValueSum:" + word.lower() + "\t" + "1")
+                print ("LongValueSum:" + word + "\t" + "1")
             line = sys.stdin.readline()
     except EOFError as error:
         return None
