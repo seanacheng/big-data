@@ -10,9 +10,9 @@ def main(argv):
     try:
         while line:
             for match in pattern.findall(line):
-                print("match:"+match)
+                print("match:"+str(match))
                 matches_list = list(match)[1:]
-                print("matches_list:"+matches_list)
+                print("matches_list:"+str(matches_list))
                 ip_addr = matches_list[0]
                 rq_type = matches_list[1]
                 er_code = matches_list[2]
