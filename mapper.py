@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """A more advanced Mapper, using Python iterators and generators."""
 
 import sys
@@ -18,7 +18,7 @@ def main(separator='\t'):
         #
         # tab-delimited; the trivial word count is 1
         for word in words:
-            print('%s%s%d' % (word, separator, 1))
+            print ('%s%s%d' % (word, separator, 1))
 
 if __name__ == "__main__":
     main()
