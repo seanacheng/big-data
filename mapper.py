@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import sys, re
-"""mapper.py"""
 
 def main(argv):
     line = sys.stdin.readline()
