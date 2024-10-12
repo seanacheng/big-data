@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import sys, re
+"""mapper.py"""
 
 def main(argv):
     line = sys.stdin.readline()
     pattern = re.compile("[a-zA-Z][a-zA-Z0-9]*")
     try:
         while line:
-            for word in line.split(" "):
+            for word in pattern.findall(line):
                 print ("LongValueSum:" + word.lower() + "\t" + "1")
             line = sys.stdin.readline()
     except EOFError as error:
