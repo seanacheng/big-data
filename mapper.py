@@ -11,11 +11,9 @@ def main(argv):
         while line:
             for match in pattern.findall(line):
                 print("match:"+str(match))
-                matches_list = list(match)[1:]
-                print("matches_list:"+str(matches_list))
-                ip_addr = matches_list[0]
-                rq_type = matches_list[1]
-                er_code = matches_list[2]
+                ip_addr = match[0]
+                rq_type = match[1]
+                er_code = match[2]
                 print ('LongValueSum:'+rq_type+'\t'+'1')
 
             line = sys.stdin.readline()
