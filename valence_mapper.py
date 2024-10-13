@@ -41,7 +41,7 @@ def main():
         for word in words:
             try:
                 valence = afinn.get(word)
-                # print("word: "+str(word))
+                print("word: "+str(word))
                 print("LongValueSum:" + president + '\t' + str(valence))
             except TypeError:
                 continue
