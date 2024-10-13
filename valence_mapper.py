@@ -5,7 +5,6 @@ import sys
 import requests
 import re
 import string
-import tarfile
 import os
 
 stopwords_list = requests.get("https://gist.githubusercontent.com/rg089/35e00abf8941d72d419224cfd5b5925d/raw/12d899b70156fd0041fa9778d657330b024b959c/stopwords.txt").content
@@ -33,7 +32,8 @@ def read_input(file):
         yield clean_text(line).split()
 
 def main(separator='\t'):
-    president = os.environ['mapreduce_map_input_file'].split("_")[0]
+    # president = os.environ['mapreduce_map_input_file'].split("_")[0]
+    president = "adams"
     data = read_input(sys.stdin)
     for words in data:
         for word in words:
@@ -43,16 +43,3 @@ def main(separator='\t'):
 if __name__ == "__main__":
     afinn = load_afinn()  # Load AFINN data
     main()
-
-
-# file_path = 'prez_speeches/adams.tar.gz'
-# extract_path = 'Quiz_4/'
-# with tarfile.open(file_path, 'r:gz') as tar:
-#     tar.extractall(path=extract_path)
-
-#     base_name = os.path.basename(file_path).split(".")[0]
-#     dir_path = extract_path + "/" + base_name
-#     texts = []
-#     for filename in os.listdir(dir_path):
-#         with open(os.path.join(dir_path, filename), 'r', encoding='utf-8') as file:
-#             texts.append(file.read())
