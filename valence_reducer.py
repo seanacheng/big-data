@@ -15,8 +15,10 @@ def main():
         try:
             total_valence = sum(int(valence) for president, valence in group)
             print(total_valence)
-            print(len(group))
-            avg_valence = total_valence / len(group)
+            group_list = list(group)
+            print(group_list)
+            group_size = len(group_list)
+            avg_valence = total_valence / group_size
             print(president + '\t' + avg_valence)
         except ValueError:
             pass
