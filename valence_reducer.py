@@ -13,11 +13,8 @@ def main():
     data = read_mapper_output(sys.stdin)
     for president, group in groupby(data, itemgetter(0)):
         group_list = list(group)
-        print(group_list)
         group_size = len(group_list)
-        print(group_size)
         total_valence = sum(int(valence) for _, valence in group_list)
-        print(total_valence)
         avg_valence = total_valence / group_size
         print(president + '\t' + str(avg_valence))
 
