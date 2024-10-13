@@ -38,7 +38,7 @@ def main(separator='\t'):
     for words in data:
         for word in words:
             valence = afinn.get(word)
-            print("LongValueSum:" + '%s%s%d' % (president, separator, valence))
+            print("LongValueSum:" + president + separator + valence)
 
 if __name__ == "__main__":
     afinn = load_afinn()  # Load AFINN data

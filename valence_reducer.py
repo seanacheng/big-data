@@ -14,7 +14,7 @@ def main(separator='\t'):
     for president, group in groupby(data, itemgetter(0)):
         try:
             total_valence = sum(int(valence) for _, valence in group)
-            print("%s%s%d" % (president, separator, total_valence / len(data)))
+            print(president + separator + total_valence / len(data))
         except ValueError:
             pass
 
