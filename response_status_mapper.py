@@ -1,30 +1,33 @@
-#!/usr/bin/python
-"""response_status_mapper.py"""
+#!/usr/bin/env python
+import sys, re
 
-import sys
+def main(argv):
+    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
 
-def read_input(file):
-    for line in file:
-        try:
-            words = line.split()
-            statusCode = int(words[8])
-            if statusCode < 200:
-                yield "informational"
-            elif statusCode < 300:
-                yield "successful"
-            elif statusCode < 400:
-                yield "redirection"
-            elif statusCode < 500:
-                yield "client error"
-            else:
-                yield "server error"
-        except:
-            continue
+    line = sys.stdin.readline()
+    pattern = re.compile(log_pattern)
 
-def main(separator='\t'):
-    data = read_input(sys.stdin)
-    for responseStatus in data:
-        print('%s%s%d' % (responseStatus, separator, 1))
+    try:
+        while line:
+            for match in pattern.findall(line):
+                statusCode = int(match[2])
+                response = None
+                if statusCode < 200:
+                    response = "informational"
+                elif statusCode < 300:
+                    response = "successful"
+                elif statusCode < 400:
+                    response = "redirection"
+                elif statusCode < 500:
+                    response = "client error"
+                else:
+                    response = "server error"
+                print ('LongValueSum:'+response+'\t'+'1')
+
+            line = sys.stdin.readline()
+    except EOFError as error:
+        return None
+
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
