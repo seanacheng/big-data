@@ -1,21 +1,24 @@
-#!/usr/bin/python
-"""ip_address_mapper.py"""
+#!/usr/bin/env python
+import sys, re
 
-import sys
+def main(argv):
+    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
 
-def read_input(file):
-    for line in file:
-        try:
-            words = line.split()
-            if int(words[8]) >= 400:
-                yield words[0]
-        except:
-            continue
+    line = sys.stdin.readline()
+    pattern = re.compile(log_pattern)
 
-def main(separator='\t'):
-    data = read_input(sys.stdin)
-    for ipAddress in data:
-        print('%s%s%d' % (ipAddress, separator, 1))
+    try:
+        while line:
+            for match in pattern.findall(line):
+                statusCode = int(match[2])
+                if statusCode >= 400:
+                    ip_addr = str(match[0])
+                    print ('LongValueSum:'+ip_addr+'\t'+'1')
+
+            line = sys.stdin.readline()
+    except EOFError as error:
+        return None
+
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
