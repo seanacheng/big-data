@@ -2,9 +2,9 @@
 import sys, re
 
 def main(argv):
-    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
-
     line = sys.stdin.readline()
+
+    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
     pattern = re.compile(log_pattern)
 
     try:

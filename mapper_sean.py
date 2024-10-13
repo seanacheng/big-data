@@ -11,18 +11,9 @@ def main(argv):
         while line:
             for match in pattern.findall(line):
                 statusCode = int(match[2])
-                response = None
-                if statusCode < 200:
-                    response = "informational"
-                elif statusCode < 300:
-                    response = "successful"
-                elif statusCode < 400:
-                    response = "redirection"
-                elif statusCode < 500:
-                    response = "client error"
-                else:
-                    response = "server error"
-                print ('LongValueSum:'+response+'\t'+'1')
+                if statusCode >= 400:
+                    ip_addr = str(match[0])
+                    print ('LongValueSum:'+ip_addr+'\t'+'1')
 
             line = sys.stdin.readline()
     except EOFError as error:
