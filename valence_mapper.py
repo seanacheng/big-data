@@ -38,11 +38,9 @@ def main():
     data = read_input(sys.stdin)
     for words in data:
         for word in words:
-            try:
-                valence = afinn.get(word)
-                print("LongValueSum:" + president + '\t' + valence)
-            except TypeError:
-                continue
+            valence = afinn.get(word)
+            if str(valence) != "None":
+                print("LongValueSum:" + president + '\t' + str(valence))
 
 if __name__ == "__main__":
     main()
