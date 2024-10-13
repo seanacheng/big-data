@@ -32,6 +32,7 @@ def read_input(file):
         yield clean_text(line).split()
 
 def main():
+    afinn = load_afinn()  # Load AFINN data
     # president = os.environ['mapreduce_map_input_file'].split("_")[0]
     president = "adams"
     data = read_input(sys.stdin)
@@ -45,5 +46,4 @@ def main():
                 continue
 
 if __name__ == "__main__":
-    afinn = load_afinn()  # Load AFINN data
     main()
