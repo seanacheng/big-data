@@ -12,6 +12,7 @@ def read_mapper_output(file):
 def main():
     data = read_mapper_output(sys.stdin)
     for president, group in groupby(data, itemgetter(0)):
+        print(str(list(group)))
         try:
             total_valence = sum(int(valence) for _, valence in group)
             print(president + '\t' + total_valence / len(list(group)))
