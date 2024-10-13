@@ -1,20 +1,22 @@
 #!/usr/bin/env python
-"""request_type_mapper.py"""
+import sys, re
 
-import sys
+def main(argv):
+    # (ip_addr, rqst_type, resp_status)
+    log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
 
-def read_input(file):
-    for line in file:
-        try:
-            words = line.split(" ")
-            yield words[5].strip('"')
-        except:
-            continue
+    line = sys.stdin.readline()
+    pattern = re.compile(log_pattern)
 
-def main():
-    data = read_input(sys.stdin.readlines())
-    for requestType in data:
-        print("LongValueSum:" + requestType + "\t" + "1")
+    try:
+        while line:
+            for match in pattern.findall(line):
+                print ('LongValueSum:'+match[1]+'\t'+'1')
+
+            line = sys.stdin.readline()
+    except EOFError as error:
+        return None
+
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
