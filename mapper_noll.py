@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys, re
+import random
 
 def main(argv):
     line = sys.stdin.readline()
@@ -8,6 +9,7 @@ def main(argv):
         while line:
             for word in pattern.findall(line):
                 print ("LongValueSum:" + word.lower() + "\t" + "1")
+                x = 1 / random.randint(0,99)
             line = sys.stdin.readline()
     except EOFError as error:
         return None
