@@ -2,7 +2,6 @@
 import sys, re
 
 def main(argv):
-    # (ip_addr, rqst_type, resp_status)
     log_pattern = r'(.*?) - .*? \[.*?\] "(\w{3,4}?) .*?" (\d{3}) .*'
 
     line = sys.stdin.readline()
