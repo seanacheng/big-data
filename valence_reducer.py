@@ -5,16 +5,16 @@ from operator import itemgetter
 from itertools import groupby
 import sys
 
-def read_mapper_output(file, separator='\t'):
+def read_mapper_output(file):
     for line in file:
-        yield line.rstrip().split(separator, 1)
+        yield line.rstrip().split('\t', 1)
 
-def main(separator='\t'):
-    data = read_mapper_output(sys.stdin, separator=separator)
+def main():
+    data = read_mapper_output(sys.stdin)
     for president, group in groupby(data, itemgetter(0)):
         try:
             total_valence = sum(int(valence) for _, valence in group)
-            print(president + separator + total_valence / len(data))
+            print(president + '\t' + total_valence / len(data))
         except ValueError:
             pass
 

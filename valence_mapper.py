@@ -31,14 +31,18 @@ def read_input(file):
     for line in file:
         yield clean_text(line).split()
 
-def main(separator='\t'):
+def main():
     # president = os.environ['mapreduce_map_input_file'].split("_")[0]
     president = "adams"
     data = read_input(sys.stdin)
     for words in data:
         for word in words:
-            valence = afinn.get(word)
-            print("LongValueSum:" + president + separator + valence)
+            try:
+                valence = afinn.get(word)
+                print("word: "+str(word))
+                print("LongValueSum:" + president + '\t' + valence)
+            except TypeError:
+                continue
 
 if __name__ == "__main__":
     afinn = load_afinn()  # Load AFINN data
