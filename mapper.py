@@ -11,6 +11,8 @@ def main(argv):
         while line:
             for match in pattern.findall(line):
                 print("match:"+str(match))
+                matches_list = list(match)
+                print("matches_list:"+str(matches_list))
                 ip_addr = match[0]
                 rq_type = match[1]
                 er_code = match[2]
