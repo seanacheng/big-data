@@ -10,11 +10,8 @@ def main(argv):
     try:
         while line:
             for match in pattern.findall(line):
-                try:
-                    rq_type = match[1]
-                    print ('LongValueSum:'+str(rq_type)+'\t'+'1')
-                except:
-                    continue
+                rq_type = match[1]
+                print ('LongValueSum:'+str(rq_type)+'\t'+'1')
 
             line = sys.stdin.readline()
     except EOFError as error:
