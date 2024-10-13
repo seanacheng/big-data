@@ -12,12 +12,12 @@ def read_mapper_output(file):
 def main():
     data = read_mapper_output(sys.stdin)
     for president, group in groupby(data, itemgetter(0)):
+        group_list = list(group)
+        print(group_list)
+        group_size = len(group_list)
         try:
-            total_valence = sum(int(valence) for president, valence in group)
+            total_valence = sum(int(valence) for _, valence in group)
             print(total_valence)
-            group_list = list(group)
-            print(group_list)
-            group_size = len(group_list)
             avg_valence = total_valence / group_size
             print(president + '\t' + avg_valence)
         except ValueError:
