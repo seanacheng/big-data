@@ -33,8 +33,7 @@ def read_input(file):
 
 def main():
     afinn = load_afinn()  # Load AFINN data
-    # president = os.environ['mapreduce_map_input_file'].split("_")[0]
-    president = "adams"
+    president = os.environ['mapreduce_map_input_file'].split("_")[0]
     data = read_input(sys.stdin)
     for words in data:
         for word in words:
