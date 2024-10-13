@@ -33,6 +33,7 @@ def read_input(file):
 
 def main():
     afinn = load_afinn()  # Load AFINN data
+    print(str(afinn))
     # president = os.environ['mapreduce_map_input_file'].split("_")[0]
     president = "adams"
     data = read_input(sys.stdin)
@@ -40,8 +41,8 @@ def main():
         for word in words:
             try:
                 valence = afinn.get(word)
-                print("word: "+str(word))
-                print("LongValueSum:" + president + '\t' + valence)
+                # print("word: "+str(word))
+                print("LongValueSum:" + president + '\t' + str(valence))
             except TypeError:
                 continue
 
