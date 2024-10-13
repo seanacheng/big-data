@@ -15,13 +15,11 @@ def main():
         group_list = list(group)
         print(group_list)
         group_size = len(group_list)
-        try:
-            total_valence = sum(int(valence) for _, valence in group)
-            print(total_valence)
-            avg_valence = total_valence / group_size
-            print(president + '\t' + str(avg_valence))
-        except ValueError:
-            pass
+        print(group_size)
+        total_valence = sum(int(valence) for _, valence in group_list)
+        print(total_valence)
+        avg_valence = total_valence / group_size
+        print(president + '\t' + str(avg_valence))
 
 
 if __name__ == "__main__":
